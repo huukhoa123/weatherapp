@@ -10,6 +10,7 @@ import { DynamicBackground } from './features/dynamic-background';
 import { ForecastList } from './features/forecast-list';
 import { LocationSearch } from './features/location-search';
 import { WeatherEffects } from './features/weather-effects';
+import { InstallApp } from './features/install-app';
 
 export function WeatherDashboard() {
     const { currentLocation, isLoading, weather, error: weatherStoreError } = useWeatherStore();
@@ -26,6 +27,7 @@ export function WeatherDashboard() {
         <main className="min-h-screen flex flex-col items-center p-4 md:p-8 relative overflow-x-hidden text-white">
             <DynamicBackground />
             <WeatherEffects />
+            <InstallApp />
 
             <div className="w-full max-w-md z-50 mt-safe-top">
                 <LocationSearch />

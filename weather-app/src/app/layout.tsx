@@ -24,6 +24,10 @@ export const metadata: Metadata = {
   title: "Vibe Weather",
   description: "Next Generation Weather App",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

@@ -18,16 +18,23 @@ export function useGeolocation() {
         navigator.geolocation.getCurrentPosition(
             async (position) => {
                 const { latitude, longitude } = position.coords;
+
+                // 1. Set coords immediately to trigger weather fetch (FAST)
+                setLocation({
+                    lat: latitude,
+                    lon: longitude,
+                    name: "Đang định vị..."
+                });
+
+                // 2. Fetch City Name in background (SLOW)
                 try {
                     const cityName = await getCityName(latitude, longitude);
-
-                    setLocation({
-                        lat: latitude,
-                        lon: longitude,
-                        name: cityName
-                    });
+                    // 3. Update name only (no weather re-fetch)
+                    useWeatherStore.getState().updateLocationName(cityName);
                 } catch {
-                    setError("Failed to process location");
+                    // Keep "Đang định vị..." or set to fallback?
+                    // setLocation handled checks, useWeatherStore handles state updates.
+                    // getCityName already returns "My Location" on error.
                 } finally {
                     setIsLocating(false);
                 }

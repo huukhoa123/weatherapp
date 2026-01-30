@@ -17,7 +17,7 @@ const getWeatherGradient = (code: number | undefined, isDay: number = 1) => {
     // 2: Partly cloudy, 3: Overcast
     if (code <= 3) {
         return isDay
-            ? "bg-gradient-to-br from-slate-300 to-blue-200" // Cloudy Day
+            ? "bg-gradient-to-br from-slate-600 to-slate-400" // Cloudy Day (Darker)
             : "bg-gradient-to-br from-slate-800 to-indigo-900"; // Cloudy Night
     }
 

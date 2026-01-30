@@ -16,6 +16,7 @@ interface WeatherState {
     error: string | null;
 
     setLocation: (location: Location) => void;
+    updateLocationName: (name: string) => void;
     fetchWeather: () => Promise<void>;
     setLoading: (loading: boolean) => void;
     setError: (error: string | null) => void;
@@ -33,6 +34,13 @@ export const useWeatherStore = create<WeatherState>()(
                 set({ currentLocation: location });
                 // Auto fetch when location changes
                 get().fetchWeather();
+            },
+
+            updateLocationName: (name) => {
+                const { currentLocation } = get();
+                if (currentLocation) {
+                    set({ currentLocation: { ...currentLocation, name } });
+                }
             },
 
             fetchWeather: async () => {

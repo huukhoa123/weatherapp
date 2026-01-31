@@ -11,7 +11,6 @@ import { ForecastList } from './features/forecast-list';
 import { LocationSearch } from './features/location-search';
 import { WeatherEffects } from './features/weather-effects';
 import { InstallApp } from './features/install-app';
-import Image from 'next/image';
 
 export function WeatherDashboard() {
     const { currentLocation, isLoading, weather, error: weatherStoreError } = useWeatherStore();
@@ -30,15 +29,7 @@ export function WeatherDashboard() {
             <WeatherEffects />
             <InstallApp />
 
-            <div className="w-full max-w-md z-50 mt-safe-top flex flex-col items-center gap-4">
-                <Image
-                    src="/logo-text.png"
-                    alt="Vibe Weather"
-                    width={180}
-                    height={60}
-                    priority
-                    className="drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
-                />
+            <div className="w-full max-w-md z-50 mt-safe-top">
                 <LocationSearch />
             </div>
 
